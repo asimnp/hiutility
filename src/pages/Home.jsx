@@ -1,3 +1,4 @@
+import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 
 export default function HomePage() {
@@ -5,6 +6,7 @@ export default function HomePage() {
     <div className="container mx-auto mt-3">
       <Navbar />
       <hr className="text-gray-100 mt-3" />
+      <Hero />
     </div>
   );
 }
