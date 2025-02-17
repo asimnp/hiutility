@@ -1,5 +1,6 @@
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
+import SearchBar from "../components/SearchBar";
 
 export default function HomePage() {
   return (
@@ -7,6 +8,7 @@ export default function HomePage() {
       <Navbar />
       <hr className="text-gray-100 mt-3" />
       <Hero />
+      <SearchBar />
     </div>
   );
 }

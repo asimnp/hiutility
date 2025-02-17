@@ -14,7 +14,10 @@ export default function Navbar() {
         <a href="#" className="font-medium hover:text-red-600">
           Contact
         </a>
-        <LuMoon size={40} className="mb-1 p-2 hover:bg-red-600 hover:text-white hover:rounded-full cursor-pointer" />
+        <LuMoon
+          size={40}
+          className="mb-1 p-2 hover:bg-red-600 hover:text-white hover:rounded-full cursor-pointer"
+        />
       </div>
     </nav>
   );
