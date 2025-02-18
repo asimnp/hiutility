@@ -7,6 +7,8 @@ import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
 import Tools from "./pages/Tools.jsx";
 import ToolsProvider from "./context/ToolsProvider.jsx";
+import ToolSingle from "./pages/ToolSingle.jsx";
+import ToolsLayout from "./pages/layouts/ToolsLayout.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -15,7 +17,11 @@ createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route path="" element={<Home />} />
-            <Route path="tools" element={<Tools />} />
+          </Route>
+
+          <Route path="tools" element={<ToolsLayout />}>
+            <Route path="" element={<Tools />} />
+            <Route path=":toolSlug" element={<ToolSingle />} />
           </Route>
         </Routes>
       </BrowserRouter>
