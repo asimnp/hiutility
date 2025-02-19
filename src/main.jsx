@@ -1,18 +1,20 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { RouterProvider, createBrowserRouter } from "react-router";
 
 import "./index.css";
+import ToolsProvider from "./context/ToolsProvider.jsx";
 import App from "./App.jsx";
 import Tools from "./pages/Tools.jsx";
-import ToolsProvider from "./context/ToolsProvider.jsx";
 import HomePage from "./pages/Home.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
-const router = createBrowserRouter([
+// routes
+export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <div>404 page not found</div>,
+    errorElement: <NotFound />,
     children: [
       {
         path: "/",
