@@ -10,6 +10,7 @@ export default function InputCurrency({
       <select
         id={label}
         value={currency}
+        min={1}
         onChange={(e) => setCurrency(e.target.value)}
         className="border border-gray-200 rounded-md p-3"
       >

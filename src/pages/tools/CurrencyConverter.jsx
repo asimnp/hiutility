@@ -26,6 +26,22 @@ export default function CurrencyConverter() {
     fetchCurrencies();
   }, []);
 
+  useEffect(() => {
+    const fetchFromCurrencies = async () => {
+      const response = await fetch(
+        `https://latest.currency-api.pages.dev/v1/currencies/${fromCurrency}.json`
+      );
+      const data = await response.json();
+      const rateList = data[fromCurrency];
+      const newAmount = (amount * rateList[toCurrency]).toFixed(2);
+      setConvertedAmount(newAmount);
+    };
+
+    fetchFromCurrencies();
+  }, [fromCurrency, toCurrency, amount]);
+
+  const handleCurrencyConvert = () => {};
+
   return (
     <div className="container mx-auto mt-3">
       <ToolHeader
@@ -61,7 +77,9 @@ export default function CurrencyConverter() {
           setAmount={setAmount}
         />
 
-        <Button>Convert</Button>
+        <Button type="button" onCurrencyConvert={handleCurrencyConvert}>
+          Convert
+        </Button>
 
         <div className="my-5 text-xl ">
           Converted amount:{" "}
