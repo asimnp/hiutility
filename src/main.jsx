@@ -8,6 +8,7 @@ import App from "./App.jsx";
 import Tools from "./pages/Tools.jsx";
 import HomePage from "./pages/Home.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import CurrencyConverter from "./pages/tools/CurrencyConverter.jsx";
 
 // routes
 export const router = createBrowserRouter([
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: "/tools",
         element: <Tools />,
+      },
+      {
+        path: "/tools/currency-converter",
+        element: <CurrencyConverter />,
       },
     ],
   },
