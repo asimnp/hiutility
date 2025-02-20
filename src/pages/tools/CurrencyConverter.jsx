@@ -13,6 +13,7 @@ export default function CurrencyConverter() {
   const [amount, setAmount] = useState(0);
   const [convertedAmount, setConvertedAmount] = useState(0);
   const [currencyList, setCurrencyList] = useState([]);
+  const [isConverted, setIsConverted] = useState(false);
 
   useEffect(() => {
     const fetchCurrencies = async () => {
@@ -26,21 +27,25 @@ export default function CurrencyConverter() {
     fetchCurrencies();
   }, []);
 
-  useEffect(() => {
-    const fetchFromCurrencies = async () => {
-      const response = await fetch(
-        `https://latest.currency-api.pages.dev/v1/currencies/${fromCurrency}.json`
-      );
-      const data = await response.json();
-      const rateList = data[fromCurrency];
-      const newAmount = (amount * rateList[toCurrency]).toFixed(2);
-      setConvertedAmount(newAmount);
-    };
+  const handleCurrencyConvert = async () => {
+    setIsConverted(false);
 
-    fetchFromCurrencies();
-  }, [fromCurrency, toCurrency, amount]);
+    const response = await fetch(
+      `https://latest.currency-api.pages.dev/v1/currencies/${fromCurrency}.json`
+    );
+    const data = await response.json();
+    const rateList = data[fromCurrency];
+    const newAmount = (amount * rateList[toCurrency]).toFixed(2);
 
-  const handleCurrencyConvert = () => {};
+    setConvertedAmount(newAmount);
+    setIsConverted(true);
+  };
+
+  const handleCurrencySwap = () => {
+    setFromCurrency(toCurrency);
+    setToCurrency(fromCurrency);
+    setIsConverted(false);
+  };
 
   return (
     <div className="container mx-auto mt-3">
@@ -58,7 +63,10 @@ export default function CurrencyConverter() {
             setCurrency={setFromCurrency}
           />
 
-          <button className="flex justify-center text-3xl hover:text-4xl cursor-pointer hover:text-red-600">
+          <button
+            onClick={handleCurrencySwap}
+            className="flex justify-center text-3xl hover:text-4xl cursor-pointer hover:text-red-600"
+          >
             <HiArrowsRightLeft />
           </button>
 
@@ -81,13 +89,15 @@ export default function CurrencyConverter() {
           Convert
         </Button>
 
-        <div className="my-5 text-xl ">
-          Converted amount:{" "}
-          <strong>
-            {amount} {fromCurrency.toUpperCase()} is {convertedAmount}{" "}
-            {toCurrency.toUpperCase()}
-          </strong>
-        </div>
+        {isConverted && (
+          <div className="my-5 text-xl ">
+            Converted amount:{" "}
+            <strong>
+              {amount} {fromCurrency.toUpperCase()} is {convertedAmount}{" "}
+              {toCurrency.toUpperCase()}
+            </strong>
+          </div>
+        )}
       </div>
     </div>
   );
