@@ -81,8 +81,8 @@ export default function CurrencyConverter() {
         <Input
           type="number"
           placeholder="Enter amount"
-          amount={amount}
-          setAmount={setAmount}
+          state={amount}
+          setState={setAmount}
         />
 
         <Button type="button" onCurrencyConvert={handleCurrencyConvert}>
