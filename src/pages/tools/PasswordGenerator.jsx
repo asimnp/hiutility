@@ -14,7 +14,6 @@ export default function PasswordGenerator() {
   const [lowerCase, setLowerCase] = useState(true);
   const [numbers, setNumbers] = useState(true);
   const [symbols, setSymbols] = useState(true);
-  const [isCopied, setIsCopied] = useState(false);
 
   const upperCaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const lowerCaseChars = "abcdefghijklmnopqrstuvwxyz";
@@ -45,6 +44,30 @@ export default function PasswordGenerator() {
   const handlePasswordCopy = () => {
     passwordInputRef.current?.select();
     window.navigator.clipboard.writeText(password);
+  };
+
+  const handleChangeUpperCase = () => {
+    if (lowerCase || numbers || symbols) {
+      setUpperCase(!upperCase);
+    }
+  };
+
+  const handleChangeLowerCase = () => {
+    if (upperCase || numbers || symbols) {
+      setLowerCase(!lowerCase);
+    }
+  };
+
+  const handleChangeNumbers = () => {
+    if (lowerCase || upperCase || symbols) {
+      setNumbers(!numbers);
+    }
+  };
+
+  const handleChangeSymbols = () => {
+    if (lowerCase || numbers || upperCase) {
+      setSymbols(!symbols);
+    }
   };
 
   return (
@@ -110,7 +133,7 @@ export default function PasswordGenerator() {
                 type="checkbox"
                 id="upper-case"
                 checked={upperCase}
-                onChange={() => setUpperCase(!upperCase)}
+                onChange={handleChangeUpperCase}
                 className="w-5 h-5 cursor-pointer accent-red-600"
               />
               <label htmlFor="upper-case" className="cursor-pointer">
@@ -123,7 +146,7 @@ export default function PasswordGenerator() {
                 type="checkbox"
                 id="lower-case"
                 checked={lowerCase}
-                onChange={() => setLowerCase(!lowerCase)}
+                onChange={handleChangeLowerCase}
                 className="w-5 h-5 cursor-pointer accent-red-600"
               />
               <label htmlFor="lower-case" className="cursor-pointer">
@@ -136,7 +159,7 @@ export default function PasswordGenerator() {
                 type="checkbox"
                 id="numbers"
                 checked={numbers}
-                onChange={() => setNumbers(!numbers)}
+                onChange={handleChangeNumbers}
                 className="w-5 h-5 cursor-pointer accent-red-600"
               />
               <label htmlFor="numbers" className="cursor-pointer">
@@ -149,7 +172,7 @@ export default function PasswordGenerator() {
                 type="checkbox"
                 id="symbols"
                 checked={symbols}
-                onChange={() => setSymbols(!symbols)}
+                onChange={handleChangeSymbols}
                 className="w-5 h-5 cursor-pointer accent-red-600"
               />
               <label htmlFor="symbols" className="cursor-pointer">
