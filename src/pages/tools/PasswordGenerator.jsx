@@ -1,19 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import {
   HiOutlineDocumentDuplicate,
   HiOutlineArrowPath,
 } from "react-icons/hi2";
 
 import ToolHeader from "../../components/ToolHeader";
-import { useCallback } from "react";
 
 export default function PasswordGenerator() {
+  const passwordInputRef = useRef(null);
   const [password, setPassword] = useState("ask3932323");
   const [length, setLength] = useState(8);
   const [upperCase, setUpperCase] = useState(true);
   const [lowerCase, setLowerCase] = useState(true);
   const [numbers, setNumbers] = useState(true);
   const [symbols, setSymbols] = useState(true);
+  const [isCopied, setIsCopied] = useState(false);
 
   const upperCaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const lowerCaseChars = "abcdefghijklmnopqrstuvwxyz";
@@ -41,6 +42,11 @@ export default function PasswordGenerator() {
     generatePassword();
   }, [upperCase, lowerCase, numbers, symbols, length, generatePassword]);
 
+  const handlePasswordCopy = () => {
+    passwordInputRef.current?.select();
+    window.navigator.clipboard.writeText(password);
+  };
+
   return (
     <div className="container mx-auto mt-3">
       <ToolHeader
@@ -48,14 +54,17 @@ export default function PasswordGenerator() {
         description="Generates strong, random passwords with customizable options for enhanced security."
       />
 
-      <div className="flex my-5 max-w-4xl gap-1 ">
+      <div className="flex my-5 max-w-4xl gap-1">
         <input
           type="text"
+          ref={passwordInputRef}
+          readOnly
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="p-3 border rounded-md border-gray-200 w-full"
+          className="p-3 border rounded-md border-gray-200 w-full outline-none cursor-not-allowed bg-gray-50"
         />
         <button
+          onClick={handlePasswordCopy}
           className="bg-gray-800 text-white px-3 py-2 text-xl rounded-md cursor-pointer hover:bg-gray-950"
           title="Copy"
         >
@@ -70,7 +79,7 @@ export default function PasswordGenerator() {
         </button>
       </div>
 
-      <div className="bg-gray-50 py-5 px-8  rounded-md max-w-4xl mb-10">
+      <div className="bg-gray-50 py-5 px-8  rounded-md max-w-4xl mb-10 border border-gray-200">
         <div className="text-xl font-medium border-b-2 border-gray-100 py-2">
           Customize your password
         </div>
@@ -91,6 +100,7 @@ export default function PasswordGenerator() {
               max={90}
               value={length}
               onChange={(e) => setLength(e.target.value)}
+              className="accent-red-600"
             />
           </div>
 
@@ -101,7 +111,7 @@ export default function PasswordGenerator() {
                 id="upper-case"
                 checked={upperCase}
                 onChange={() => setUpperCase(!upperCase)}
-                className="w-5 h-5 cursor-pointer"
+                className="w-5 h-5 cursor-pointer accent-red-600"
               />
               <label htmlFor="upper-case" className="cursor-pointer">
                 Uppercase
@@ -114,7 +124,7 @@ export default function PasswordGenerator() {
                 id="lower-case"
                 checked={lowerCase}
                 onChange={() => setLowerCase(!lowerCase)}
-                className="w-5 h-5 cursor-pointer"
+                className="w-5 h-5 cursor-pointer accent-red-600"
               />
               <label htmlFor="lower-case" className="cursor-pointer">
                 Lowercase
@@ -127,7 +137,7 @@ export default function PasswordGenerator() {
                 id="numbers"
                 checked={numbers}
                 onChange={() => setNumbers(!numbers)}
-                className="w-5 h-5 cursor-pointer"
+                className="w-5 h-5 cursor-pointer accent-red-600"
               />
               <label htmlFor="numbers" className="cursor-pointer">
                 Numbers
@@ -140,7 +150,7 @@ export default function PasswordGenerator() {
                 id="symbols"
                 checked={symbols}
                 onChange={() => setSymbols(!symbols)}
-                className="w-5 h-5 cursor-pointer"
+                className="w-5 h-5 cursor-pointer accent-red-600"
               />
               <label htmlFor="symbols" className="cursor-pointer">
                 Symbols
