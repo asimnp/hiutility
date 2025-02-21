@@ -1,18 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   HiOutlineDocumentDuplicate,
   HiOutlineArrowPath,
 } from "react-icons/hi2";
 
 import ToolHeader from "../../components/ToolHeader";
+import { useCallback } from "react";
 
 export default function PasswordGenerator() {
   const [password, setPassword] = useState("ask3932323");
   const [length, setLength] = useState(8);
-  const [upperCase, setUpperCase] = useState(false);
-  const [lowerCase, setLowerCase] = useState(false);
-  const [numbers, setNumbers] = useState(false);
-  const [symbols, setSymbols] = useState(false);
+  const [upperCase, setUpperCase] = useState(true);
+  const [lowerCase, setLowerCase] = useState(true);
+  const [numbers, setNumbers] = useState(true);
+  const [symbols, setSymbols] = useState(true);
+
+  const upperCaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const lowerCaseChars = "abcdefghijklmnopqrstuvwxyz";
+  const numbersChars = "0123456789";
+  const symbolsChars = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+
+  const generatePassword = useCallback(() => {
+    let newPasswordChars = "";
+    let newPassword = "";
+
+    if (upperCase) newPasswordChars += upperCaseChars;
+    if (lowerCase) newPasswordChars += lowerCaseChars;
+    if (numbers) newPasswordChars += numbersChars;
+    if (symbols) newPasswordChars += symbolsChars;
+
+    for (let i = 1; i <= length; i++) {
+      const charIndex = Math.floor(Math.random() * newPasswordChars.length);
+      newPassword += newPasswordChars.charAt(charIndex);
+    }
+
+    setPassword(newPassword);
+  }, [upperCase, lowerCase, numbers, symbols, length]);
+
+  useEffect(() => {
+    generatePassword();
+  }, [upperCase, lowerCase, numbers, symbols, length, generatePassword]);
 
   return (
     <div className="container mx-auto mt-3">
@@ -28,10 +55,17 @@ export default function PasswordGenerator() {
           onChange={(e) => setPassword(e.target.value)}
           className="p-3 border rounded-md border-gray-200 w-full"
         />
-        <button className="bg-gray-800 text-white px-3 py-2 text-xl rounded-md">
+        <button
+          className="bg-gray-800 text-white px-3 py-2 text-xl rounded-md cursor-pointer hover:bg-gray-950"
+          title="Copy"
+        >
           <HiOutlineDocumentDuplicate />
         </button>
-        <button className="bg-gray-800 text-white px-3 py-2 text-xl rounded-md">
+        <button
+          onClick={generatePassword}
+          className="bg-gray-800 text-white px-3 py-2 text-xl rounded-md cursor-pointer hover:bg-gray-950"
+          title="Generate"
+        >
           <HiOutlineArrowPath />
         </button>
       </div>
@@ -65,8 +99,8 @@ export default function PasswordGenerator() {
               <input
                 type="checkbox"
                 id="upper-case"
-                value={upperCase}
-                onClick={(e) => setUpperCase(e.target.value)}
+                checked={upperCase}
+                onChange={() => setUpperCase(!upperCase)}
                 className="w-5 h-5 cursor-pointer"
               />
               <label htmlFor="upper-case" className="cursor-pointer">
@@ -78,8 +112,8 @@ export default function PasswordGenerator() {
               <input
                 type="checkbox"
                 id="lower-case"
-                value={lowerCase}
-                onClick={(e) => setLowerCase(e.target.value)}
+                checked={lowerCase}
+                onChange={() => setLowerCase(!lowerCase)}
                 className="w-5 h-5 cursor-pointer"
               />
               <label htmlFor="lower-case" className="cursor-pointer">
@@ -91,8 +125,8 @@ export default function PasswordGenerator() {
               <input
                 type="checkbox"
                 id="numbers"
-                value={numbers}
-                onClick={(e) => setNumbers(e.target.value)}
+                checked={numbers}
+                onChange={() => setNumbers(!numbers)}
                 className="w-5 h-5 cursor-pointer"
               />
               <label htmlFor="numbers" className="cursor-pointer">
@@ -104,8 +138,8 @@ export default function PasswordGenerator() {
               <input
                 type="checkbox"
                 id="symbols"
-                value={symbols}
-                onClick={(e) => setSymbols(e.target.value)}
+                checked={symbols}
+                onChange={() => setSymbols(!symbols)}
                 className="w-5 h-5 cursor-pointer"
               />
               <label htmlFor="symbols" className="cursor-pointer">
