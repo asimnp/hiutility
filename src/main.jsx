@@ -10,6 +10,7 @@ import HomePage from "./pages/Home.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import CurrencyConverter from "./pages/tools/CurrencyConverter.jsx";
 import PasswordGenerator from "./pages/tools/PasswordGenerator.jsx";
+import Todo from "./pages/tools/Todo.jsx";
 
 // routes
 export const router = createBrowserRouter([
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/tools/password-generator",
         element: <PasswordGenerator />,
+      },
+      {
+        path: "/tools/todo",
+        element: <Todo />,
       },
     ],
   },

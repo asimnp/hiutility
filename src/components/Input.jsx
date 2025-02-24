@@ -1,4 +1,9 @@
-export default function Input({ type = "text", placeholder, state, setState }) {
+export default function Input({
+  type = "text",
+  placeholder,
+  state,
+  setState,
+}) {
   return (
     <input
       type={type}
