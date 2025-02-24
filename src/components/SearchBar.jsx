@@ -1,6 +1,6 @@
 import { LuSearch } from "react-icons/lu";
 
-export default function SearchBar() {
+export default function SearchBar({ value, setValue }) {
   return (
     <form className="flex justify-center items-center ">
       <label htmlFor="" className="relative">
@@ -11,6 +11,8 @@ export default function SearchBar() {
 
         <input
           type="text"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
           placeholder="Search for utilities..."
           className="border-2 border-gray-100 h-12 rounded-md w-xl pl-14 focus:outline-red-600"
         />
