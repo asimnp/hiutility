@@ -3,9 +3,17 @@ import { HiOutlineTrash } from "react-icons/hi2";
 
 import Input from "../../components/Input";
 import ToolHeader from "../../components/ToolHeader";
+import { getItem, setItem } from "../../utils/localStorage";
+import { useEffect } from "react";
+import { useLocalPersistedState } from "../../hooks/useLocalPersistedState";
 
-export function TodoItem({ todo, onDeleteTodo }) {
+export function TodoItem({ todo, onDeleteTodo, onUpdateTodo }) {
   const [isDone, setIsDone] = useState(todo.isCompleted);
+
+  const handleUpdateTodo = (id) => {
+    setIsDone(!isDone);
+    onUpdateTodo(id);
+  };
 
   return (
     <div className="flex justify-between items-center bg-gray-100 px-8 py-4 rounded-md my-4">
@@ -14,7 +22,7 @@ export function TodoItem({ todo, onDeleteTodo }) {
           type="checkbox"
           className="w-4 h-4 accent-red-600 cursor-pointer"
           checked={isDone}
-          onChange={() => setIsDone(!isDone)}
+          onChange={() => handleUpdateTodo(todo.id)}
         />
         <div
           className={`text-lg ${
@@ -36,7 +44,7 @@ export function TodoItem({ todo, onDeleteTodo }) {
 
 export default function Todo() {
   const [todo, setTodo] = useState("");
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useLocalPersistedState("TODOS", []);
 
   const handleAddTodo = () => {
     const newTodo = {
@@ -51,6 +59,14 @@ export default function Todo() {
 
   const handleDeleteTodo = (id) => {
     setTodos(todos.filter((t) => t.id !== id));
+  };
+
+  const handleUpdateTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
+      )
+    );
   };
 
   return (
@@ -78,6 +94,7 @@ export default function Todo() {
               key={todo.id}
               todo={todo}
               onDeleteTodo={handleDeleteTodo}
+              onUpdateTodo={handleUpdateTodo}
             />
           ))
         ) : (
