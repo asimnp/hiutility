@@ -5,6 +5,8 @@ import { useTools } from "../context/tools";
 export default function Tools() {
   const { tools } = useTools();
 
+  const sortedTools = tools.toSorted((a, b) => a.name.localeCompare(b.name));
+
   return (
     <div className="container mx-auto">
       <div className="flex flex-col gap-5 items-center justify-center mt-32">
@@ -15,7 +17,7 @@ export default function Tools() {
       </div>
 
       <div className="grid grid-cols-3 gap-7 mt-18 mb-52">
-        {tools.map((tool) => (
+        {sortedTools.map((tool) => (
           <ToolCard key={tool.path} tool={tool} />
         ))}
       </div>

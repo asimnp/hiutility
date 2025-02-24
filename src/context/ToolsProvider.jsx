@@ -14,9 +14,22 @@ export default function ToolsProvider({ children }) {
         path: "currency-converter",
       },
       {
-        name: "Unit Converter",
-        description: "Convert between different units",
-        path: "unit-converter",
+        name: "Todo",
+        description:
+          "Organize tasks, set priorities, and track progress effortlessly.",
+        path: "todo",
+      },
+      {
+        name: "Weather",
+        description:
+          "Real-time forecasts and conditions to help you plan your day.",
+        path: "weather",
+      },
+      {
+        name: "AI Chat",
+        description:
+          "Seamless conversations, instant responses, and intelligent assistance.",
+        path: "ai-chat",
       },
     ],
   };
