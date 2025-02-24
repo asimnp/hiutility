@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 
 import SearchBar from "../components/SearchBar";
 import ToolCard from "../components/ToolCard";
 import { useTools } from "../context/tools";
-import { useMemo } from "react";
 
 export default function Tools() {
   const { tools } = useTools();
