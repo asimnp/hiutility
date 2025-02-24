@@ -3,8 +3,6 @@ import { HiOutlineTrash } from "react-icons/hi2";
 
 import Input from "../../components/Input";
 import ToolHeader from "../../components/ToolHeader";
-import { getItem, setItem } from "../../utils/localStorage";
-import { useEffect } from "react";
 import { useLocalPersistedState } from "../../hooks/useLocalPersistedState";
 
 export function TodoItem({ todo, onDeleteTodo, onUpdateTodo }) {
