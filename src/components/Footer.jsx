@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router";
 
 export default function Footer() {
   return (
-    <footer className="mt-auto bg-black ">
+    <footer className="mt-auto bg-black">
       <div className="grid grid-cols-3 gap-12 container mx-auto py-10">
         <div>
           <img src="/logo.svg" alt="Logo" className="h-10 mb-5" />
