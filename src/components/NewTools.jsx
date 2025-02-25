@@ -17,9 +17,12 @@ export default function NewTools() {
       </div>
 
       <div className="grid grid-cols-3 gap-7">
-        {[...tools].reverse().slice(0, 3).map((tool) => (
-          <ToolCard key={tool.path} tool={tool} />
-        ))}
+        {[...tools]
+          .reverse()
+          .slice(0, 3)
+          .map((tool) => (
+            <ToolCard key={tool.path} tool={tool} />
+          ))}
       </div>
     </div>
   );
