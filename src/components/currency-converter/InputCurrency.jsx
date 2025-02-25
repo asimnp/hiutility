@@ -5,7 +5,7 @@ export default function InputCurrency({
   setCurrency,
 }) {
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1 dark:text-gray-300">
       <label htmlFor={label} className="text-lg font-medium">{label}</label>
       <select
         id={label}
@@ -15,7 +15,7 @@ export default function InputCurrency({
         className="border border-gray-200 rounded-md p-3"
       >
         {Object.keys(currencyList)?.map((currency) => (
-          <option key={currency} value={currency}>
+          <option key={currency} value={currency} className="dark:text-gray-300 dark:bg-black">
             {currency}
           </option>
         ))}
