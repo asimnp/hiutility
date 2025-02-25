@@ -44,7 +44,9 @@ export default function Todo() {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useLocalPersistedState("TODOS", []);
 
-  const handleAddTodo = () => {
+  const handleAddTodo = (e) => {
+    e.preventDefault();
+
     const newTodo = {
       id: crypto.randomUUID(),
       task: todo,
@@ -70,20 +72,19 @@ export default function Todo() {
   return (
     <div className="container mx-auto">
       <ToolHeader name="To-Do List" />
-      <div className="flex items-center gap-2">
+      <form onSubmit={handleAddTodo} className="flex items-center gap-2">
         <Input
           placeholder="Add a new todo..."
           state={todo}
           setState={setTodo}
         />
         <button
-          type="button"
-          onClick={handleAddTodo}
+          type="submit"
           className="bg-gray-800 text-white px-6 py-3 rounded-md hover:bg-gray-950 cursor-pointer"
         >
           Add
         </button>
-      </div>
+      </form>
 
       <div>
         {todos.length > 0 ? (
