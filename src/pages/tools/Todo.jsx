@@ -14,7 +14,7 @@ export function TodoItem({ todo, onDeleteTodo, onUpdateTodo }) {
   };
 
   return (
-    <div className="flex justify-between items-center bg-gray-100 px-8 py-4 rounded-md my-4">
+    <div className="flex justify-between items-center bg-gray-100 px-8 py-4 rounded-md my-4 dark:bg-gray-900 dark:text-gray-300">
       <label className="flex items-center gap-5 cursor-pointer">
         <input
           type="checkbox"
@@ -24,7 +24,9 @@ export function TodoItem({ todo, onDeleteTodo, onUpdateTodo }) {
         />
         <div
           className={`text-lg ${
-            isDone ? "line-through text-gray-400" : "text-gray-800"
+            isDone
+              ? "line-through text-gray-400"
+              : "text-gray-800 dark:text-gray-300"
           }`}
         >
           {todo.task}
@@ -44,7 +46,9 @@ export default function Todo() {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useLocalPersistedState("TODOS", []);
 
-  const handleAddTodo = () => {
+  const handleAddTodo = (e) => {
+    e.preventDefault();
+
     const newTodo = {
       id: crypto.randomUUID(),
       task: todo,
@@ -70,20 +74,19 @@ export default function Todo() {
   return (
     <div className="container mx-auto">
       <ToolHeader name="To-Do List" />
-      <div className="flex items-center gap-2">
+      <form onSubmit={handleAddTodo} className="flex items-center gap-2">
         <Input
           placeholder="Add a new todo..."
           state={todo}
           setState={setTodo}
         />
         <button
-          type="button"
-          onClick={handleAddTodo}
-          className="bg-gray-800 text-white px-6 py-3 rounded-md hover:bg-gray-950 cursor-pointer"
+          type="submit"
+          className="bg-gray-800 text-white px-6 py-3 rounded-md hover:bg-gray-950 cursor-pointer dark:hover:bg-gray-700"
         >
           Add
         </button>
-      </div>
+      </form>
 
       <div>
         {todos.length > 0 ? (

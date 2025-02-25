@@ -10,7 +10,7 @@ export default function Input({
       value={state}
       onChange={(e) => setState(e.target.value)}
       placeholder={placeholder}
-      className="p-3 border rounded-md my-5 border-gray-200 w-full"
+      className="p-3 border rounded-md my-5 border-gray-200 w-full dark:text-gray-300"
     />
   );
 }

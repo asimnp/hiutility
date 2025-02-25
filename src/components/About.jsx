@@ -1,8 +1,8 @@
 export default function About() {
   return (
-    <div className="bg-gray-50 text-center py-6 my-16" id="about">
+    <div className="bg-gray-50 dark:bg-gray-950 text-center py-6 my-16" id="about">
       <div className="max-w-4xl mx-auto mt-3">
-        <div className="text-3xl font-medium mb-5">About</div>
+        <div className="text-3xl font-medium mb-5 dark:text-gray-300">About</div>
         <p className="text-gray-500 mb-5">
           Hiutility is a collection of carefully crafted tools designed to make
           your daily tasks easier and more efficient. Our mission is to provide

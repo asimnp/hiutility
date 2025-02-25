@@ -11,6 +11,8 @@ import NotFound from "./pages/NotFound.jsx";
 import CurrencyConverter from "./pages/tools/CurrencyConverter.jsx";
 import PasswordGenerator from "./pages/tools/PasswordGenerator.jsx";
 import Todo from "./pages/tools/Todo.jsx";
+import AIChat from "./pages/tools/AIChat.jsx";
+import Weather from "./pages/tools/Weather.jsx";
 
 // routes
 export const router = createBrowserRouter([
@@ -38,6 +40,14 @@ export const router = createBrowserRouter([
       {
         path: "/tools/todo",
         element: <Todo />,
+      },
+      {
+        path: "/tools/ai-chat",
+        element: <AIChat />,
+      },
+      {
+        path: "/tools/weather",
+        element: <Weather />,
       },
     ],
   },

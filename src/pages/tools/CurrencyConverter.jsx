@@ -65,7 +65,7 @@ export default function CurrencyConverter() {
 
           <button
             onClick={handleCurrencySwap}
-            className="flex justify-center text-3xl hover:text-4xl cursor-pointer hover:text-red-600"
+            className="flex justify-center text-3xl hover:text-4xl cursor-pointer hover:text-red-600 dark:text-gray-300"
           >
             <HiArrowsRightLeft />
           </button>
@@ -90,7 +90,7 @@ export default function CurrencyConverter() {
         </Button>
 
         {isConverted && (
-          <div className="my-5 text-xl ">
+          <div className="my-5 text-xl dark:text-gray-300">
             Converted amount:{" "}
             <strong>
               {amount} {fromCurrency.toUpperCase()} is {convertedAmount}{" "}
