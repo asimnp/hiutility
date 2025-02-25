@@ -77,32 +77,32 @@ export default function PasswordGenerator() {
         description="Generates strong, random passwords with customizable options for enhanced security."
       />
 
-      <div className="flex my-5 max-w-4xl gap-1">
+      <div className="flex my-5 max-w-4xl gap-2">
         <input
           type="text"
           ref={passwordInputRef}
           readOnly
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="p-3 border rounded-md border-gray-200 w-full outline-none cursor-not-allowed bg-gray-50"
+          className="p-3 border rounded-md border-gray-200 w-full outline-none cursor-not-allowed bg-gray-50 dark:bg-gray-900 dark:text-gray-300"
         />
         <button
           onClick={handlePasswordCopy}
-          className="bg-gray-800 text-white px-3 py-2 text-xl rounded-md cursor-pointer hover:bg-gray-950"
+          className="bg-gray-800 text-white px-3 py-2 text-xl rounded-md cursor-pointer hover:bg-gray-950 dark:hover:bg-gray-700"
           title="Copy"
         >
           <HiOutlineDocumentDuplicate />
         </button>
         <button
           onClick={generatePassword}
-          className="bg-gray-800 text-white px-3 py-2 text-xl rounded-md cursor-pointer hover:bg-gray-950"
+          className="bg-gray-800 text-white px-3 py-2 text-xl rounded-md cursor-pointer hover:bg-gray-950 dark:hover:bg-gray-700"
           title="Generate"
         >
           <HiOutlineArrowPath />
         </button>
       </div>
 
-      <div className="bg-gray-50 py-5 px-8  rounded-md max-w-4xl mb-10 border border-gray-200">
+      <div className="bg-gray-50 py-5 px-8  rounded-md max-w-4xl mb-10 border border-gray-200 dark:bg-gray-900 dark:text-gray-300 ">
         <div className="text-xl font-medium border-b-2 border-gray-100 py-2">
           Customize your password
         </div>
