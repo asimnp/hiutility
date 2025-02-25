@@ -24,7 +24,9 @@ export function TodoItem({ todo, onDeleteTodo, onUpdateTodo }) {
         />
         <div
           className={`text-lg ${
-            isDone ? "line-through text-gray-400" : "text-gray-800 dark:text-gray-300"
+            isDone
+              ? "line-through text-gray-400"
+              : "text-gray-800 dark:text-gray-300"
           }`}
         >
           {todo.task}
