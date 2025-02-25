@@ -21,7 +21,7 @@ export default function NewTools() {
           .reverse()
           .slice(0, 3)
           .map((tool) => (
-            <ToolCard key={tool.path} tool={tool} />
+            <ToolCard key={tool.path} tool={tool} url={"tools/"} />
           ))}
       </div>
     </div>
