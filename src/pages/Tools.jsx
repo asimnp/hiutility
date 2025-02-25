@@ -20,7 +20,7 @@ export default function Tools() {
   return (
     <div className="container mx-auto">
       <div className="flex flex-col gap-5 items-center justify-center mt-32">
-        <h1 className="font-bold text-2xl">
+        <h1 className="font-bold text-2xl dark:text-gray-300">
           Explore <span className="text-red-600">utility</span> tools
         </h1>
         <SearchBar value={search} setValue={setSearch} />
