@@ -2,11 +2,11 @@ import { Link, NavLink } from "react-router";
 
 export default function Footer() {
   return (
-    <footer className="mt-auto bg-black border-t-2 border-gray-800">
-      <div className="grid grid-cols-3 gap-12 container mx-auto py-10">
+    <footer className="mt-auto border-t-2 border-gray-800 bg-black">
+      <div className="sm:container mx-5 grid grid-cols-1 gap-12 py-10 sm:mx-auto sm:grid-cols-3">
         <div>
-          <img src="/logo.svg" alt="Logo" className="h-10 mb-5" />
-          <p className="text-white mb-5">
+          <img src="/logo.svg" alt="Logo" className="mb-5 h-10" />
+          <p className="mb-5 text-white">
             Making everyday tasks simpler and faster with powerful utility
             tools.
           </p>
@@ -32,7 +32,7 @@ export default function Footer() {
           </Link>
         </div>
 
-        <div className="flex flex-col gap-3 ">
+        <div className="flex flex-col gap-3">
           <div className="mb-2 font-medium text-white">Legal</div>
           <a href="#" className="text-gray-500 hover:text-red-600">
             Privacy policy
@@ -42,7 +42,7 @@ export default function Footer() {
           </a>
         </div>
       </div>
-      <p className="text-white text-center text-sm py-3">
+      <p className="py-3 text-center text-sm text-white">
         &copy; {new Date().getFullYear()} Hiutility. All rights reserved.
       </p>
     </footer>

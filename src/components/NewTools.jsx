@@ -8,15 +8,15 @@ export default function NewTools() {
   const { tools } = useTools();
 
   return (
-    <div className="max-w-3xl mx-auto mt-32">
-      <div className="flex justify-between items-center mb-6 dark:text-gray-300">
+    <div className="mx-5 mt-32 max-w-3xl sm:mx-auto">
+      <div className="mb-6 flex items-center justify-between dark:text-gray-300">
         <div className="text-2xl font-medium">New Tools</div>
         <Link to="tools" className="hover:text-red-600">
           Show all tools <LuMoveRight className="inline pl-1" />
         </Link>
       </div>
 
-      <div className="grid grid-cols-3 gap-7">
+      <div className="grid grid-cols-1 gap-7 sm:grid-cols-3">
         {[...tools]
           .reverse()
           .slice(0, 3)
