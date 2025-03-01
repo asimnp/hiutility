@@ -1,9 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 import ToolHeader from "../../components/ToolHeader";
 import envVars from "../../config/env";
-import { useState } from "react";
 import CurrentWeatherCard from "../../components/weather/CurrentWeatherCard";
 import WeatherForm from "../../components/weather/WeatherForm";
 
@@ -43,7 +42,11 @@ export default function Weather() {
 
       <WeatherForm city={city} setCity={setCity} onSearch={handleSearch} />
 
-      {errorMessage && <div className="text-red-600 my-5 bg-red-100 w-6xl rounded-md p-3">{errorMessage}</div>}
+      {errorMessage && (
+        <div className="text-red-600 my-5 bg-red-100 w-6xl rounded-md p-3">
+          {errorMessage}
+        </div>
+      )}
 
       {data ? (
         <CurrentWeatherCard data={data} />

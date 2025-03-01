@@ -1,8 +1,7 @@
-import { HiOutlineMapPin, HiOutlineClock, HiOutlineEye } from "react-icons/hi2";
+import { HiOutlineMapPin, HiOutlineEye } from "react-icons/hi2";
 import { CiTempHigh } from "react-icons/ci";
 import { PiWind } from "react-icons/pi";
 import { LuDroplets } from "react-icons/lu";
-import { BsSunrise, BsSunset } from "react-icons/bs";
 
 export default function CurrentWeatherCard({ data }) {
   return (
@@ -12,16 +11,12 @@ export default function CurrentWeatherCard({ data }) {
           <div className="flex gap-5 items-center">
             <HiOutlineMapPin size={40} />
             <div className="text-2xl font-medium">{data.name}</div>
+            <div>{data.sys.country}</div>
           </div>
           <div className="flex justify-center items-center gap-2">
             <p>Lat: {data.coord.lat}</p> &middot;
             <p>Lon: {data.coord.lon}</p>
           </div>
-        </div>
-
-        <div className="flex justify-center items-center gap-3">
-          <HiOutlineClock size={40} />
-          <p className="text-xl">{data.timezone}</p>
         </div>
       </div>
 
@@ -80,32 +75,6 @@ export default function CurrentWeatherCard({ data }) {
             <div>
               <div className="text-sm text-gray-600">Humidity</div>
               <div className="font-bold">{data.main.humidity}%</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-amber-100 p-5 rounded-b-md">
-        <div className="ml-10 text-xl mb-5 font-medium">Sun Schedule</div>
-
-        <div className="flex justify-between items-center gap-5 mx-10">
-          <div className="flex justify-center items-center gap-5">
-            <BsSunrise size={30} className="text-amber-600" />
-            <div>
-              <div className="text-sm text-gray-600">Sunrise</div>
-              {/* <div>{data.sys.sunrise}</div> */}
-              <div className="font-bold text-lg">09:45 AM</div>
-            </div>
-          </div>
-
-          <hr className="w-xl h-1.5 border-0 rounded-md bg-linear-to-r from-amber-300 to-amber-600" />
-
-          <div className="flex justify-center items-center gap-5">
-            <BsSunset size={30} className="text-amber-600" />
-            <div>
-              <div className="text-sm text-gray-600">Sunset</div>
-              {/* <div>{data.sys.sunset}</div> */}
-              <div className="font-bold text-lg">12:05 AM</div>
             </div>
           </div>
         </div>
