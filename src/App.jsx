@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 
 export default function App() {
   return (
-    <div className="dark:bg-black min-h-screen w-full">
+    <div className="flex min-h-screen w-full flex-col dark:bg-black">
       <Navbar />
       <Outlet />
       <Footer />

@@ -5,7 +5,7 @@ import { LuDroplets } from "react-icons/lu";
 
 export default function CurrentWeatherCard({ data }) {
   return (
-    <section className="mb-24 w-full sm:w-6xl">
+    <section className="mb-24 w-full lg:w-6xl">
       <div className="flex flex-col items-center justify-between rounded-t-md bg-gray-800 px-10 py-4 text-white sm:flex-row">
         <div className="flex flex-col gap-5">
           <div className="flex items-center gap-5">

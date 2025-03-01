@@ -3,7 +3,7 @@ import { HiOutlineMapPin } from "react-icons/hi2";
 export default function WeatherForm({ city, setCity, onSearch }) {
   return (
     <form
-      className="relative my-6 flex w-full gap-3 sm:w-6xl"
+      className="relative my-6 flex w-full gap-3 lg:w-6xl"
       onSubmit={onSearch}
     >
       <input
