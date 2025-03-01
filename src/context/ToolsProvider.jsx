@@ -25,12 +25,6 @@ export default function ToolsProvider({ children }) {
           "Real-time forecasts and conditions to help you plan your day.",
         path: "weather",
       },
-      {
-        name: "AI Chat",
-        description:
-          "Seamless conversations, instant responses, and intelligent assistance.",
-        path: "ai-chat",
-      },
     ],
   };
   return <ToolsContext.Provider value={data}>{children}</ToolsContext.Provider>;
