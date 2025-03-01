@@ -34,7 +34,7 @@ export default function Weather() {
   }, []);
 
   return (
-    <div className="container mx-auto">
+    <div className="mx-5 sm:container sm:mx-auto">
       <ToolHeader
         name="Weather"
         description="A smart weather application that delivers real-time forecasts, severe weather alerts, and climate insights. "
@@ -43,7 +43,7 @@ export default function Weather() {
       <WeatherForm city={city} setCity={setCity} onSearch={handleSearch} />
 
       {errorMessage && (
-        <div className="text-red-600 my-5 bg-red-100 w-6xl rounded-md p-3">
+        <div className="my-5 w-6xl rounded-md bg-red-100 p-3 text-red-600">
           {errorMessage}
         </div>
       )}
@@ -51,7 +51,7 @@ export default function Weather() {
       {data ? (
         <CurrentWeatherCard data={data} />
       ) : (
-        <div className="text-gray-400 my-10">Loading current weather...</div>
+        <div className="my-10 text-gray-400">Loading current weather...</div>
       )}
     </div>
   );
