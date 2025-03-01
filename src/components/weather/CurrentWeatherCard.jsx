@@ -23,7 +23,7 @@ export default function CurrentWeatherCard({ data }) {
       <div className="bg-gray-50 px-10 py-20 flex justify-between items-center">
         <div className="flex justify-center items-center gap-3">
           <img
-            src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`}
+            src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`}
             alt={`${data.weather[0].description} weather`}
             className="w-25 h-25"
           />
