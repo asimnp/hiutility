@@ -43,7 +43,7 @@ export default function Footer() {
         </div>
       </div>
       <p className="text-white text-center text-sm py-3">
-        &copy; 2025 Hiutility. All rights reserved.
+        &copy; {new Date().getFullYear()} Hiutility. All rights reserved.
       </p>
     </footer>
   );
