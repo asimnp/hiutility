@@ -5,17 +5,23 @@ export default function InputCurrency({
   setCurrency,
 }) {
   return (
-    <div className="flex flex-col gap-1 dark:text-gray-300">
-      <label htmlFor={label} className="text-lg font-medium">{label}</label>
+    <div className="flex min-w-60 flex-col gap-1 dark:text-gray-300">
+      <label htmlFor={label} className="text-lg font-medium">
+        {label}
+      </label>
       <select
         id={label}
         value={currency}
         min={1}
         onChange={(e) => setCurrency(e.target.value)}
-        className="border border-gray-200 rounded-md p-3"
+        className="w-full rounded-md border border-gray-200 p-3"
       >
         {Object.keys(currencyList)?.map((currency) => (
-          <option key={currency} value={currency} className="dark:text-gray-300 dark:bg-black">
+          <option
+            key={currency}
+            value={currency}
+            className="dark:bg-black dark:text-gray-300"
+          >
             {currency}
           </option>
         ))}

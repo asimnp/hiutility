@@ -48,14 +48,14 @@ export default function CurrencyConverter() {
   };
 
   return (
-    <div className="container mx-auto mt-3">
+    <div className="mx-5 mt-3 sm:container sm:mx-auto">
       <ToolHeader
         name="Currency Converter"
         description="A simple and efficient currency converter that provides real-time exchange rates, allowing you to convert between multiple currencies instantly. "
       />
 
-      <div className="border border-gray-200 p-5 rounded-md mb-10">
-        <div className="grid grid-cols-1 sm:grid-cols-3 items-center">
+      <div className="mb-10 rounded-md border border-gray-200 p-5">
+        <div className="grid grid-cols-1 items-center sm:grid-cols-3">
           <InputCurrency
             label="From"
             currencyList={currencyList}
@@ -65,9 +65,9 @@ export default function CurrencyConverter() {
 
           <button
             onClick={handleCurrencySwap}
-            className="flex justify-center text-3xl hover:text-4xl cursor-pointer hover:text-red-600 dark:text-gray-300"
+            className="flex cursor-pointer justify-center text-3xl hover:text-4xl hover:text-red-600 dark:text-gray-300"
           >
-            <HiArrowsRightLeft />
+            <HiArrowsRightLeft className="mt-5 sm:mt-0" />
           </button>
 
           <InputCurrency

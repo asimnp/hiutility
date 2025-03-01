@@ -18,15 +18,15 @@ export default function Tools() {
   }, [search, sortedTools]);
 
   return (
-    <div className="container mx-auto">
-      <div className="flex flex-col gap-5 items-center justify-center mt-32">
-        <h1 className="font-bold text-2xl dark:text-gray-300">
+    <div className="mx-5 sm:container sm:mx-auto">
+      <div className="mt-32 flex flex-col items-center justify-center gap-5">
+        <h1 className="text-2xl font-bold dark:text-gray-300">
           Explore <span className="text-red-600">utility</span> tools
         </h1>
         <SearchBar value={search} setValue={setSearch} />
       </div>
 
-      <div className="grid grid-cols-3 gap-7 mt-18 mb-52">
+      <div className="mt-18 mb-52 grid grid-cols-1 gap-7 sm:grid-cols-3">
         {filteredTools.map((tool) => (
           <ToolCard key={tool.path} tool={tool} />
         ))}

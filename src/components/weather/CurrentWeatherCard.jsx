@@ -5,29 +5,29 @@ import { LuDroplets } from "react-icons/lu";
 
 export default function CurrentWeatherCard({ data }) {
   return (
-    <section className="w-6xl mb-24">
-      <div className="flex justify-between items-center bg-gray-800 text-white px-10 py-4 rounded-t-md">
+    <section className="mb-24 w-full lg:w-6xl">
+      <div className="flex flex-col items-center justify-between rounded-t-md bg-gray-800 px-10 py-4 text-white sm:flex-row">
         <div className="flex flex-col gap-5">
-          <div className="flex gap-5 items-center">
+          <div className="flex items-center gap-5">
             <HiOutlineMapPin size={40} />
             <div className="text-2xl font-medium">{data.name}</div>
             <div>{data.sys.country}</div>
           </div>
-          <div className="flex justify-center items-center gap-2">
+          <div className="flex items-center justify-center gap-2">
             <p>Lat: {data.coord.lat}</p> &middot;
             <p>Lon: {data.coord.lon}</p>
           </div>
         </div>
       </div>
 
-      <div className="bg-gray-50 px-10 py-20 flex justify-between items-center">
-        <div className="flex justify-center items-center gap-3">
+      <div className="flex flex-col items-center justify-between gap-10 bg-gray-50 px-10 py-20 sm:flex-row sm:gap-0">
+        <div className="flex items-center justify-center gap-3">
           <img
             src={`https://openweathermap.org/img/w/${data.weather[0].icon}.png`}
             alt={`${data.weather[0].description} weather`}
-            className="w-25 h-25"
+            className="h-25 w-25"
           />
-          <div className="flex flex-col justify-center items-center gap-3">
+          <div className="flex flex-col items-center justify-center gap-3">
             <div className="text-5xl font-bold">
               {data.main.temp}
               <sup>o</sup>C
