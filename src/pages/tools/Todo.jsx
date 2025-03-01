@@ -14,18 +14,18 @@ export function TodoItem({ todo, onDeleteTodo, onUpdateTodo }) {
   };
 
   return (
-    <div className="flex justify-between items-center bg-gray-100 px-8 py-4 rounded-md my-4 dark:bg-gray-900 dark:text-gray-300">
-      <label className="flex items-center gap-5 cursor-pointer">
+    <div className="my-4 flex items-center justify-between rounded-md bg-gray-100 px-8 py-4 dark:bg-gray-900 dark:text-gray-300">
+      <label className="flex cursor-pointer items-center gap-5">
         <input
           type="checkbox"
-          className="w-4 h-4 accent-red-600 cursor-pointer"
+          className="h-4 w-4 cursor-pointer accent-red-600"
           checked={isDone}
           onChange={() => handleUpdateTodo(todo.id)}
         />
         <div
           className={`text-lg ${
             isDone
-              ? "line-through text-gray-400"
+              ? "text-gray-400 line-through"
               : "text-gray-800 dark:text-gray-300"
           }`}
         >
@@ -34,7 +34,7 @@ export function TodoItem({ todo, onDeleteTodo, onUpdateTodo }) {
       </label>
       <button
         onClick={() => onDeleteTodo(todo.id)}
-        className="hover:text-red-600 cursor-pointer"
+        className="cursor-pointer hover:text-red-600"
       >
         <HiOutlineTrash size={22} />
       </button>
@@ -72,7 +72,7 @@ export default function Todo() {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="mx-5 mb-15 sm:container sm:mx-auto">
       <ToolHeader name="To-Do List" />
       <form onSubmit={handleAddTodo} className="flex items-center gap-2">
         <Input
@@ -82,7 +82,7 @@ export default function Todo() {
         />
         <button
           type="submit"
-          className="bg-gray-800 text-white px-6 py-3 rounded-md hover:bg-gray-950 cursor-pointer dark:hover:bg-gray-700"
+          className="cursor-pointer rounded-md bg-gray-800 px-6 py-3 text-white hover:bg-gray-950 dark:hover:bg-gray-700"
         >
           Add
         </button>
@@ -99,7 +99,7 @@ export default function Todo() {
             />
           ))
         ) : (
-          <div className="text-red-600 my-5">
+          <div className="my-5 text-red-600">
             &quot;No todos available&quot; – Sounds like a great time to panic
             or party. Choose wisely. 🎉🔥
           </div>
