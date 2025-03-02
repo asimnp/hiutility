@@ -26,12 +26,13 @@ export default function Contact() {
         form.current?.reset();
         setSending(false);
       })
-      .catch((error) =>
+      .catch((error) => {
         setMessage({
           type: "error",
           message: "Failed to sent email. Please try again later.",
-        })
-      );
+        });
+        setSending(false);
+      });
   };
 
   return (
